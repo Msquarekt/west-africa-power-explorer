@@ -1098,16 +1098,61 @@ elif view == "Transmission Explorer":
             use_container_width=True
         )
 
+
 elif view == "Price duration curves":
-    st.subheader("Benin/Togo price duration curves")
-    pick=st.multiselect("Scenarios",["S1","S2","S3"],default=["S1","S2","S3"])
-    if pick:
-        long=prices.melt(id_vars="hour_rank",value_vars=pick,var_name="Scenario",value_name="Marginal price (USD/MWh)")
-        fig=px.line(long,x="hour_rank",y="Marginal price (USD/MWh)",color="Scenario",title="Sorted hourly marginal-price outputs")
-        st.plotly_chart(fig,use_container_width=True)
+
+    st.subheader("Benin/Togo Price Duration Curves")
+
+    st.markdown(
+        "Explore the duration-sorted hourly marginal prices "
+        "for an individual transmission scenario."
+    )
+
+    selected_scenario = st.selectbox(
+        "Select transmission scenario",
+        options=["S1", "S2", "S3"],
+        index=0
+    )
+
+    fig_price = px.line(
+        prices,
+        x="hour_rank",
+        y=selected_scenario,
+        labels={
+            "hour_rank": "Ranked hour",
+            selected_scenario: "Marginal price (USD/MWh)"
+        },
+        title=f"Benin/Togo Price Duration Curve — {selected_scenario}"
+    )
+
+    fig_price.update_layout(
+        height=480,
+        hovermode="x unified"
+    )
+
+    st.plotly_chart(
+        fig_price,
+        width="stretch"
+    )
+
+    st.caption(
+        "Hourly marginal prices are sorted by duration, "
+        "not displayed in chronological order."
+    )
+
+    if selected_scenario == "S1":
+        st.info(
+            "S1 displays a short period of higher marginal "
+            "prices, followed by a long period around "
+            "67.60 USD/MWh in the exported dataset."
+        )
+
     else:
-        st.info("Select at least one scenario.")
-    st.caption("Prices are duration-sorted, not chronological hourly timestamps.")
+        st.info(
+            f"{selected_scenario} has a nearly constant "
+            "marginal-price duration curve around "
+            "67.60 USD/MWh in the exported dataset."
+        )
 
 else:
     st.subheader("Model Methodology and Limitations")
