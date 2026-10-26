@@ -19,7 +19,40 @@ def load():
 scenarios, ng_data, prices, gh_data = load()
 
 
-st.title("⚡ West Africa Power Explorer")
+
+header_left, header_right = st.columns([3, 2])
+
+with header_left:
+    st.title("⚡ West Africa Power Explorer")
+
+
+with header_right:
+    st.markdown(
+        """
+        <div style="text-align: right; padding-top: 18px;">
+            <div style="
+                font-size: 18px;
+                font-weight: 700;
+                color: #2563EB;
+                letter-spacing: 0.3px;
+            ">
+                Micheal Kehinde Temitope
+            </div>
+            <div style="
+                font-size: 12px;
+                font-weight: 600;
+                color: #0D9488;
+                letter-spacing: 1.5px;
+                margin-top: 5px;
+            ">
+                Project Developer
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 st.caption("Hourly 2023 three-region electricity-system optimization • Linopy / HiGHS • Research portfolio")
 st.markdown("Explore how electricity transmission between **Nigeria**, **Benin/Togo**, and **Ghana** affects system costs, CO₂ emissions and supply adequacy. All displayed numerical results are from the supplied model output workbook; no new optimization is performed here.")
 
