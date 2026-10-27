@@ -4,6 +4,7 @@ import plotly.express as px
 import streamlit as st
 
 st.set_page_config(page_title="West Africa Power Explorer", page_icon="⚡", layout="wide")
+
 DATA = Path(__file__).parent / "data"
 
 
@@ -29,7 +30,7 @@ with header_left:
 with header_right:
     st.markdown(
         """
-        <div style="text-align: right; padding-top: 18px;">
+        <div class="developer-header" style="text-align: right; padding-top: 18px;">
             <div style="
                 font-size: 18px;
                 font-weight: 700;
@@ -52,6 +53,22 @@ with header_right:
         unsafe_allow_html=True
     )
 
+
+st.markdown(
+    """
+    <style>
+    @media (max-width: 768px) {
+        .developer-header {
+            text-align: center !important;
+            padding-top: 0 !important;
+            margin-top: -10px !important;
+            margin-bottom: 8px !important;
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.caption("Hourly 2023 three-region electricity-system optimization • Linopy / HiGHS • Research portfolio")
 st.markdown("Explore how electricity transmission between **Nigeria**, **Benin/Togo**, and **Ghana** affects system costs, CO₂ emissions and supply adequacy. All displayed numerical results are from the supplied model output workbook; no new optimization is performed here.")
@@ -164,13 +181,19 @@ if view == "Project Overview":
     )
 
     st.subheader("Model at a Glance")
+ 
+    with st.container(horizontal=True, horizontal_alignment="distribute"):
+        with st.container(width=155):
+            st.metric("Modeled regions", "3")
 
-    c1, c2, c3, c4 = st.columns(4)
+        with st.container(width=155):
+            st.metric("Simulation hours", "8,760")
 
-    c1.metric("Modeled regions", "3")
-    c2.metric("Simulation hours", "8,760")
-    c3.metric("Generation assets", "15")
-    c4.metric("Core scenarios", "4")
+        with st.container(width=155):
+            st.metric("Generation assets", "15")
+
+        with st.container(width=155):
+            st.metric("Core scenarios", "4")
 
 
     # ----------------------------------------
@@ -207,28 +230,36 @@ if view == "Project Overview":
 
     co2_increase = s1["co2_mt"] - s0["co2_mt"]
 
-    r1, r2, r3 = st.columns(3)
+    
+    # Responsive headline results
+    with st.container(
+        horizontal=True,
+        horizontal_alignment="distribute"
+    ):
+        with st.container(width=235):
+            st.metric(
+                "Annual operating objective reduction",
+                f"${objective_reduction:.3f} bn",
+                f"{objective_reduction_pct:.1f}% lower than S0",
+                delta_color="off"
+            )
 
-    r1.metric(
-        "Annual operating objective reduction",
-        f"${objective_reduction:.3f} bn",
-        f"{objective_reduction_pct:.1f}% lower than S0",
-        delta_color="off"
-    )
+        with st.container(width=235):
+            st.metric(
+                "Reduction in energy not served",
+                f"{ens_reduction:,.2f} GWh",
+                "S1: 0 GWh unserved",
+                delta_color="off"
+            )
 
-    r2.metric(
-        "Reduction in energy not served",
-        f"{ens_reduction:,.2f} GWh",
-        "S1: 0 GWh unserved",
-        delta_color="off"
-    )
+        with st.container(width=235):
+            st.metric(
+                "Change in operational CO₂",
+                f"+{co2_increase:.3f} Mt",
+                "S1 relative to S0",
+                delta_color="off"
+            )
 
-    r3.metric(
-        "Change in operational CO₂",
-        f"+{co2_increase:.3f} Mt",
-        "S1 relative to S0",
-        delta_color="off"
-    )
 
     st.caption(
         "Operating objective includes modeled generation "
