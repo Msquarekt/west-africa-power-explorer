@@ -1,6 +1,17 @@
+
 # ⚡ West Africa Power Explorer
 
+### Electricity Market Optimization | Cross-Border Transmission | Energy Systems Modeling
+
 **An interactive research portfolio exploring the operational value of cross-border electricity transmission in West Africa.**
+
+🌐 **[Explore the Live Dashboard](https://west-africa-power-explorer.streamlit.app/)**
+
+**Technologies:** Python · Linopy · HiGHS · Streamlit · Plotly · Pandas
+
+**Developer:** Micheal Kehinde Temitope
+
+**Professional Profiles:** [LinkedIn](https://www.linkedin.com/in/ktmicheal/) | [GitHub](https://github.com/Msquarekt)
 
 ## Project Overview
 
@@ -42,6 +53,17 @@ Four main scenarios were evaluated:
 
 ## Selected Research Findings
 
+### Quantitative Scenario Comparison
+
+| Scenario | NG–BT (MW) | GH–BT (MW) | Annual operating objective (USD billion) | Operational CO₂ (Mt) | ENS (GWh) |
+|---|---:|---:|---:|---:|---:|
+| S0 | 0 | 0 | 3.456 | 17.553 | 1,206.26 |
+| S1 | 200 | 250 | 1.653 | 18.604 | 0.00 |
+| S2 | 300 | 375 | 1.629 | 18.686 | 0.00 |
+| S3 | 335 | 655.2 | 1.621 | 18.715 | 0.00 |
+
+*Note: Values are rounded from the previously solved optimization results. The annual operating objective includes modeled generation operating costs and penalties for unserved demand but excludes transmission investment costs.*
+
 The disconnected S0 scenario has approximately 1,206.26 GWh of unserved energy, while S1–S3 eliminate modeled unmet demand.
 
 Moving from S0 to S1 reduces the annual optimized operating objective by approximately $1.802 billion, or 52.2%. This reduction includes the effect of avoided penalties for unserved demand and should not be interpreted solely as generation fuel-cost savings.
@@ -69,19 +91,18 @@ The Transmission Explorer also presents interval-average operating-cost savings 
 ## Project Structure
 
 ```text
+
 10_Interactive_Portfolio/
 ├── app.py
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
-├── data/
-│   ├── scenarios.csv
-│   ├── ng_sensitivity.csv
-│   ├── gh_sensitivity.csv
-│   └── price_duration.csv
-├── docs/
-├── figures/
-└── model/
+└── data/
+    ├── scenarios.csv
+    ├── ng_sensitivity.csv
+    ├── gh_sensitivity.csv
+    └── price_duration.csv
+
 ```
 
 The local virtual environment and temporary working files are excluded from version control.
@@ -149,10 +170,17 @@ Potential extensions include integrated transmission investment costs, additiona
 
 Live optimization would require further performance, memory, dependency, and hosting tests.
 
+
 ## Project Status
 
-**Current stage:** Local Streamlit research portfolio developed and undergoing validation before public deployment.
+**Current stage:** Interactive research portfolio developed and publicly deployed.
 
 **Research type:** Independent electricity-systems modeling and optimization project.
 
-**Publication status:** GitHub and public Streamlit deployment are planned but not yet completed.
+**Deployment status:** Public Streamlit application available online.
+
+**Live application:** https://west-africa-power-explorer.streamlit.app/
+
+**GitHub repository:** https://github.com/Msquarekt/west-africa-power-explorer
+
+**Development status:** Core dashboard functionality implemented, with ongoing improvements to documentation, usability, and reproducibility.
