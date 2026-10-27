@@ -27,28 +27,24 @@ with header_left:
     st.title("⚡ West Africa Power Explorer")
 
 
+
+
 with header_right:
     st.markdown(
         """
-        <div class="developer-header" style="text-align: right; padding-top: 18px;">
-            <div style="
-                font-size: 18px;
-                font-weight: 700;
-                color: #2563EB;
-                letter-spacing: 0.3px;
-            ">
-                Micheal Kehinde Temitope
-            </div>
-            <div style="
-                font-size: 12px;
-                font-weight: 600;
-                color: #0D9488;
-                letter-spacing: 1.5px;
-                margin-top: 5px;
-            ">
-                Project Developer
-            </div>
-        </div>
+<div class="developer-header" style="text-align: right; padding-top: 18px;">
+<div style="font-size: 18px; font-weight: 700; color: #2563EB; letter-spacing: 0.3px;">
+Micheal Kehinde Temitope
+</div>
+<div style="font-size: 12px; font-weight: 600; color: #0D9488; letter-spacing: 1.5px; margin-top: 5px;">
+Project Developer
+</div>
+<div style="margin-top: 10px; font-size: 14px;">
+<a href="https://www.linkedin.com/in/ktmicheal/" target="_blank" rel="noopener noreferrer" style="color: #2563EB; font-weight: 600; text-decoration: none;">LinkedIn ↗</a>
+<span style="margin: 0 10px; color: #94A3B8;">|</span>
+<a href="https://github.com/Msquarekt" target="_blank" rel="noopener noreferrer" style="color: #2563EB; font-weight: 600; text-decoration: none;">GitHub ↗</a>
+</div>
+</div>
         """,
         unsafe_allow_html=True
     )
