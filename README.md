@@ -13,6 +13,24 @@
 
 **Professional Profiles:** [LinkedIn](https://www.linkedin.com/in/ktmicheal/) | [GitHub](https://github.com/Msquarekt)
 
+
+## Dashboard Preview
+
+The screenshots below highlight the interactive research portfolio, simplified regional electricity network, and key optimization results.
+
+### Application Overview
+
+![West Africa Power Explorer homepage and electricity network](figures/dashboard_overview.png)
+
+### Model Characteristics and Headline Results
+
+![West Africa Power Explorer model characteristics and S0–S1 optimization results](figures/dashboard_overview_2.png)
+
+**[Launch the Interactive Dashboard](https://west-africa-power-explorer.streamlit.app/)**
+
+---
+
+
 ## Project Overview
 
 This independent research project investigates how electricity transmission capacity between Nigeria, Benin/Togo, and Ghana affects electricity-system operating costs, supply reliability, operational CO₂ emissions, and electricity prices.
@@ -91,7 +109,6 @@ The Transmission Explorer also presents interval-average operating-cost savings 
 ## Project Structure
 
 ```text
-
 10_Interactive_Portfolio/
 ├── app.py
 ├── requirements.txt
